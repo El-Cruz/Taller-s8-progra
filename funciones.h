@@ -5,4 +5,4 @@ void agregarProducto(char nombres[][20], int tiempos[], int recursos[], int cant
 void mostrarProductos(char nombres[][20], int tiempos[], int recursos[], int cantidades[], int cantidadActual);
 void editarProducto(char nombres[][20], int tiempos[], int recursos[], int cantidades[], int cantidadActual);
 void eliminarProducto(char nombres[][20], int tiempos[], int recursos[], int cantidades[], int *cantidadActual);
-void calcularProduccion(int tiempos[], int recursos[], int cantidades[], int cantidadActual, int tiempoMax, int cant_recursos);
+void calcularProduccion(int tiempos[], int recursos[], int cantidades[], int cantidadActual, int t_entrega[], int cant_recursos);

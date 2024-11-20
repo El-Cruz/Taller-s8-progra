@@ -9,10 +9,12 @@ int main (int argc, char *argv[]) {
     int tiempos[5];
     int recursos[5];
     int cantidades[5];
+    int t_entrega[5];
     int cantidadActual = 0;
 
     line();
     printf("\n\tOptimizator\n");
+    printf("\nPara poder comenzar primero ");
     printf("\nIngrese la cantidad de recursos de la empresa: ");
     scanf("%d", &cant_recursos);
     line();
@@ -32,7 +34,7 @@ int main (int argc, char *argv[]) {
             eliminarProducto(nombres, tiempos, recursos, cantidades, &cantidadActual);
             break;
         case 4:
-            calcularProduccion(tiempos, recursos, cantidades, cantidadActual, tiempo_max, cant_recursos);
+            calcularProduccion(tiempos, recursos, cantidades, cantidadActual, t_entrega, cant_recursos);
             break;
         case 5:
             mostrarProductos(nombres, tiempos, recursos, cantidades, cantidadActual);

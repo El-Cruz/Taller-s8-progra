@@ -7,6 +7,7 @@ char nombres[5][20];
 int tiempos[5];
 int recursos[5];
 int cantidades[5];
+int t_entrega[5];
 int cantidadActual = 0;
 
 void line(){
@@ -23,19 +24,24 @@ void menu(){
         printf("Elija una opción: ");
 }
 
-void agregarProducto(char nombres[][20], int tiempos[], int recursos[], int cantidades[], int *cantidadActual){
+void agregarProducto(char nombres[][20], int tiempos[], int recursos[], int cantidades[], int *cantidadActual, int t_entrega[]){
+    int aux;
     if (*cantidadActual >= 5) {
         printf("No se pueden agregar más productos.\n");
         return;
     }
     printf("Ingrese el nombre del producto: ");
     scanf(" %[^\n]", nombres[*cantidadActual]);
-    printf("Ingrese el tiempo de fabricación: ");
+    printf("Ingrese el tiempo de fabricación h: ");
     scanf("%d", &tiempos[*cantidadActual]);
     printf("Ingrese la cantidad de recursos requeridos: ");
     scanf("%d", &recursos[*cantidadActual]);
     printf("Ingrese la cantidad demandada: ");
     scanf("%d", &cantidades[*cantidadActual]);
+    printf("Ingrese en cuantos días se desea entregar: ");
+    scanf("%d", aux);
+    t_entrega[*cantidadActual] = aux *24;
+
 
     (*cantidadActual)++;
     printf("Producto agregado correctamente.\n");
@@ -115,18 +121,19 @@ void mostrarProductos(char nombres[][20], int tiempos[], int recursos[], int can
     }
 }
 
-void calcularProduccion(int tiempos[], int recursos[], int cantidades[], int cantidadActual, int tiempoMax, int cant_recursos) {
-    int tiempoTotal = 0, recursosTotales = 0;
+void calcularProduccion(int tiempos[], int recursos[], int cantidades[], int cantidadActual, int t_entrega[], int cant_recursos) {
+    int tiempoTotal = 0, recursosTotales = 0, t_entregatotal = 0;
 
     for (int i = 0; i < cantidadActual; i++) {
         tiempoTotal += tiempos[i] * cantidades[i];
         recursosTotales += recursos[i] * cantidades[i];
+        t_entregatotal += t_entrega[i];
     }
 
     printf("\nTiempo total requerido: %d\n", tiempoTotal);
     printf("Recursos totales requeridos: %d\n", recursosTotales);
 
-    if (tiempoTotal > tiempoMax) {
+    if (tiempoTotal > t_entregatotal) {
         printf("No es posible cumplir con el tiempo disponible.\n");
     } else if (recursosTotales > cant_recursos) {
         printf("No es posible cumplir con los recursos disponibles.\n");
