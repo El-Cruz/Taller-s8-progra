@@ -25,7 +25,7 @@ void menu(){
 }
 
 void agregarProducto(char nombres[][20], int tiempos[], int recursos[], int cantidades[], int *cantidadActual, int t_entrega[]){
-    int aux;
+    int dias;
     if (*cantidadActual >= 5) {
         printf("No se pueden agregar más productos.\n");
         return;
@@ -34,13 +34,13 @@ void agregarProducto(char nombres[][20], int tiempos[], int recursos[], int cant
     scanf(" %[^\n]", nombres[*cantidadActual]);
     printf("Ingrese el tiempo de fabricación h: ");
     scanf("%d", &tiempos[*cantidadActual]);
-    printf("Ingrese la cantidad de recursos requeridos: ");
+    printf("Ingrese la cantidad de procesadores requeridos: ");
     scanf("%d", &recursos[*cantidadActual]);
     printf("Ingrese la cantidad demandada: ");
     scanf("%d", &cantidades[*cantidadActual]);
     printf("Ingrese en cuantos días se desea entregar: ");
-    scanf("%d", aux);
-    t_entrega[*cantidadActual] = aux *24;
+    scanf("%d", &dias);
+    t_entrega[*cantidadActual] = dias *24;
 
 
     (*cantidadActual)++;
@@ -65,7 +65,7 @@ void editarProducto(char nombres[][20], int tiempos[], int recursos[], int canti
             printf("\nProducto encontrado: %s\n", nombres[i]);
             printf("Ingrese el nuevo tiempo de fabricación: ");
             scanf("%d", &tiempos[i]);
-            printf("Ingrese la nueva cantidad de recursos requeridos: ");
+            printf("Ingrese la nueva cantidad de procesadores requeridos: ");
             scanf("%d", &recursos[i]);
             printf("Ingrese la nueva cantidad demandada: ");
             scanf("%d", &cantidades[i]);
@@ -90,7 +90,7 @@ void eliminarProducto(char nombres[][20], int tiempos[], int recursos[], int can
 
     for (int i = 0; i < *cantidadActual; i++) {
         if (strcmp(nombres[i], nombreBuscado) == 0) {
-            printf("Producto encontrado: %s. Eliminando...\n", nombres[i]);
+            printf("Producto encontrado: %s. \nEliminando...\n", nombres[i]);
 
             for (int j = i; j < *cantidadActual - 1; j++) {
                 strcpy(nombres[j], nombres[j + 1]);
@@ -100,7 +100,7 @@ void eliminarProducto(char nombres[][20], int tiempos[], int recursos[], int can
             }
 
             (*cantidadActual)--;  
-            printf("Producto eliminado correctamente.\n");
+            printf("\nProducto eliminado correctamente.\n");
             return;
         }
     }
@@ -116,7 +116,7 @@ void mostrarProductos(char nombres[][20], int tiempos[], int recursos[], int can
 
     printf("\n--- Lista de Productos ---\n");
     for (int i = 0; i < cantidadActual; i++) {
-        printf("%d. %s | Tiempo: %d | Recursos: %d | Cantidad: %d\n", 
+        printf("%d. %s | Tiempo: %d | Procesadores: %d | Cantidad: %d\n", 
                i + 1, nombres[i], tiempos[i], recursos[i], cantidades[i]);
     }
 }
@@ -131,7 +131,7 @@ void calcularProduccion(int tiempos[], int recursos[], int cantidades[], int can
     }
 
     printf("\nTiempo total requerido: %d\n", tiempoTotal);
-    printf("Recursos totales requeridos: %d\n", recursosTotales);
+    printf("Procesadores totales requeridos: %d\n", recursosTotales);
 
     if (tiempoTotal > t_entregatotal) {
         printf("No es posible cumplir con el tiempo disponible.\n");

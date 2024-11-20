@@ -15,7 +15,7 @@ int main (int argc, char *argv[]) {
     line();
     printf("\n\tOptimizator\n");
     printf("\nPara poder comenzar primero ");
-    printf("\nIngrese la cantidad de recursos de la empresa: ");
+    printf("\nIngrese la cantidad de procesadores de la empresa: ");
     scanf("%d", &cant_recursos);
     line();
     do{
@@ -25,7 +25,7 @@ int main (int argc, char *argv[]) {
 
         switch (opc){
         case 1:
-            agregarProducto(nombres, tiempos, recursos, cantidades, &cantidadActual);
+            agregarProducto(nombres, tiempos, recursos, cantidades, &cantidadActual, t_entrega);
             break;
         case 2:
             editarProducto(nombres, tiempos, recursos, cantidades, cantidadActual);
