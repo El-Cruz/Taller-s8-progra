@@ -40,7 +40,7 @@ void agregarProducto(char nombres[][20], int tiempos[], int recursos[], int cant
     scanf("%d", &cantidades[*cantidadActual]);
     printf("Ingrese en cuantos días se desea entregar: ");
     scanf("%d", &dias);
-    t_entrega[*cantidadActual] = dias *24;
+    t_entrega[*cantidadActual] = dias *8;
 
 
     (*cantidadActual)++;
