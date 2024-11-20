@@ -4,10 +4,17 @@
 int main (int argc, char *argv[]) {
 
 
-    int opc, recursos;
+    int opc, cant_recursos, tiempo_max = 160;
+    char nombres[5][20];
+    int tiempos[5];
+    int recursos[5];
+    int cantidades[5];
+    int cantidadActual = 0;
 
     line();
     printf("\n\tOptimizator\n");
+    printf("\nIngrese la cantidad de recursos de la empresa: ");
+    scanf("%d", &cant_recursos);
     line();
     do{
         menu();
@@ -16,25 +23,26 @@ int main (int argc, char *argv[]) {
 
         switch (opc){
         case 1:
-            /* code */
+            agregarProducto(nombres, tiempos, recursos, cantidades, &cantidadActual);
             break;
         case 2:
-            /* code */
+            editarProducto(nombres, tiempos, recursos, cantidades, cantidadActual);
             break;
         case 3:
-            /* code */
+            eliminarProducto(nombres, tiempos, recursos, cantidades, &cantidadActual);
             break;
         case 4:
-            /* code */
+            calcularProduccion(tiempos, recursos, cantidades, cantidadActual, tiempo_max, cant_recursos);
             break;
         case 5:
-            /* code */
+            mostrarProductos(nombres, tiempos, recursos, cantidades, cantidadActual);
             break;
         case 6:
-            /* code */
+            printf("Saliendo del programa.\n");
             break;
         
         default:
+            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
             break;
         }
 
